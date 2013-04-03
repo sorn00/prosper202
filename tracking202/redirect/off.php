@@ -101,24 +101,16 @@ if (!$_GET['pci']) {
 		<html>
 			<head>
 				<title><? echo $html['aff_campaign_name']; ?></title>
-				<meta name="robots" content="noindex">
-				<meta http-equiv="refresh" content="1; url=<? echo $redirect_site_url; ?>">
-			</head>
-			<body>
-			
-			<form name="form1" id="form1" method="get" action="/tracking202/redirect/cl2.php">
-				<input type="hidden" name="q" value="<? echo $redirect_site_url; ?>"/>
-			</form>
-				<script type="text/javascript">
-					document.form1.submit();
-				</script>
-		
-				<div style="padding: 30px; text-align: center;">
-					You are being automatically redirected to <? echo $html['aff_campaign_name']; ?>.<br/><br/>
-					Page Stuck? <a href="<? echo $redirect_site_url; ?>">Click Here</a>.
-				</div>
-			</body>
-		</html> 
+				<meta name="robots" content="noindex,nofollow">
+		<script>window.location='<? echo $url; ?>';</script>
+		<meta http-equiv="refresh" content="0; url=<? echo $url; ?>">
+	</head>
+	<body>
+		<div style="padding: 30px; text-align: center;">
+			Page Stuck? <a href="<? echo $url; ?>">Click Here</a>.
+		</div>
+	</body> 
+</html> 
 
  <? }
 	

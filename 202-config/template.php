@@ -75,17 +75,13 @@ case "202-account":
 					<div style="float: left; ">
 						<a href="/tracking202/" <? if ($navigation[1] == 'tracking202') { echo 'class="bold";'; } ?>>Tracking202</a>  
 						&middot;
-						<a href="http://www.conversion202.com" <? if ($navigation[1] == 'alerts202') { echo 'class="bold";'; } ?> target="_blank">Conversion202</a>   
-						&middot;						
-				        <a href="/offers202/" <? if ($navigation[1] == 'offers202') { echo 'class="bold";'; } ?>>Offers202</a>  
-						&middot; 
 						
 						<?php /* 
 						<a href="/stats202/" <? if ($navigation[1] == 'stats202') { echo 'class="bold";'; } ?>>Stats202</a>  
 						&middot;
 						<a href="/alerts202/" <? if ($navigation[1] == 'alerts202') { echo 'class="bold";'; } ?>>Alerts202eh</a>   
 						&middot; */ ?> 
-						<a href="/202-resources/" <? if ($navigation[1] == '202-resources') { echo 'class="bold";'; } ?>>Featured Resources<span id="new_offers"></span></a>
+						
 						<script type="text/javascript"> new Ajax.Updater('new_offers', '/202-account/ajax/new-offers.php'); </script>
 					</div>
 					
@@ -114,16 +110,7 @@ case "202-account":
 	
 	<div style="clear: both;"></div>
 	<div class="footer">
-		Thank you for marketing with <a href="http://prosper202.com">Prosper202</a>
-		&middot; 
-		<a href="/202-account/help.php">Help</a>
-		&middot; 
-		<a href="http://prosper202.com/apps/docs/">Documentation</a>
-		&middot; 
-		<a href="http://prosper202.com/apps/donate/">Donate</a>
-		&middot; 
-		<a href="http://prosper202.com/forum/">Forum</a>
-		&middot; 
+		
 		
 		<? if ($_SESSION['update_needed'] == true) { ?>
 		 	<strong>Your Prosper202 <? echo $version; ?> is out of date. <a href="http://prosper202.com/apps/download/">Please update</a>.</strong>
@@ -135,10 +122,7 @@ case "202-account":
 		 
 		 
 	<table style="margin: 20px auto 0px; text-align: left;" cellspacing="0" cellpadding="0">
-		<tr valign="top">
-			<td><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="/202-img/BYNCSA.png" /></a></td>
-			<td style="line-height: 1.5em; padding-left: 10px; ">This work (Prosper202 and Tracking202) is licensed under a<br/> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License</a>.</td>
-		</tr>
+		
 	</table>
 		
 	</div>

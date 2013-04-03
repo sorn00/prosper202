@@ -3305,7 +3305,7 @@ function runBreakdown($user_pref) {
 
 function date_chart($breakdown, $date) {
 	if ($breakdown == 'hour') {
-		$date = date('m/d/y G:i', $date);
+		$date = date('m/d/y g:ia', $date);
 	} elseif ($breakdown == 'day') { 
 		$date = date('M jS', $date);      
 	} elseif ($breakdown == 'month') { 
@@ -3551,6 +3551,11 @@ function runHourly($user_pref) {
 		   //populate the PHP array with the Year title
 		   $hour = mysql_result ( $breakdown_result, $i, "sort_breakdown_from");
 	
+		   if ($hour == 0) { $hour = 'midnight'; } 
+		   if (( $hour > 0) and ($hour < 12)) { $hour = $hour . 'am'; } 
+		   if ($hour == 12) { $hour =  'noon'; }
+		   if ($hour > 12) { $hour = ($hour - 12) . 'pm'; }
+		  
 		   $chart [ 'chart_data' ][ 0 ][ $col ] = $hour;
 
 		   //populate the PHP array with the revenue data
@@ -3596,6 +3601,11 @@ function runHourly($user_pref) {
 		    //populate the PHP array with the Year title
 		   $hour = mysql_result ( $breakdown_result, $i, "sort_breakdown_from");
 	
+		   if ($hour == 0) { $hour = 'midnight'; } 
+		   if (( $hour > 0) and ($hour < 12)) { $hour = $hour . 'am'; } 
+		   if ($hour == 12) { $hour =  'noon'; }
+		   if ($hour > 12) { $hour = ($hour - 12) . 'pm'; }
+		  
 		   $chart [ 'chart_data' ][ 0 ][ $col ] = $hour;
 
 		   //populate the PHP array with the revenue data

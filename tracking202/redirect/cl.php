@@ -33,22 +33,13 @@ $html['aff_campaign_name'] = $tracker_row['aff_campaign_name'];
 <html>
 	<head>
 		<title><? echo $html['aff_campaign_name']; ?></title>
-		<meta name="robots" content="noindex">
-		<meta http-equiv="refresh" content="0; url=<? echo $redirect_site_url; ?>">
+		<meta name="robots" content="noindex,nofollow">
+		<script>top.location.href='<? echo $redirect_site_url; ?>';</script>
+       
 	</head>
 	<body>
-	
-		<form name="form1" id="form1" method="get" action="<?php echo $action_site_url; ?>">
-			<input type="hidden" name="q" value="<? echo $redirect_site_url; ?>"/>
-		</form>
-		<script type="text/javascript">
-			document.form1.submit();
-		</script>
-		
-		
 		<div style="padding: 30px; text-align: center;">
-			You are being automatically redirected to <? echo $html['aff_campaign_name']; ?>.<br/><br/>
-			Page Stuck? <a href="<? echo $redirect_site_url; ?>">Click Here</a>.
+			Page Stuck? <a href="<? echo $url; ?>">Click Here</a>.
 		</div>
 	</body> 
 </html> 

@@ -1,10 +1,11 @@
-<? header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
+<?
+header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
 header('Expires: Sun, 03 Feb 2008 05:00:00 GMT'); // Date in the past
 header("Pragma: no-cache");
 if (array_key_exists('HTTPS', $_SERVER) && $_SERVER['HTTPS'] == 'on') {
-	$strProtocol = 'https';
+    $strProtocol = 'https';
 } else {
-	$strProtocol =  'http';
+    $strProtocol = 'http';
 }
 ?>
 function t202Init(){
@@ -16,31 +17,63 @@ function t202Init(){
 		var t202kw = t202GetVar('t202kw');
 	}
 
-	var lpip = '<? echo htmlentities($_GET['lpip']); ?>';
+	var lpip = '<?
+echo htmlentities($_GET['lpip']);
+?>';
 	var t202id = t202GetVar('t202id');
 	var OVRAW = t202GetVar('OVRAW');
 	var OVKEY = t202GetVar('OVKEY');
 	var OVMTC = t202GetVar('OVMTC');
-<?php if (array_key_exists('c1', $_GET)): ?>
-	var c1 = <?= json_encode($_GET['c1']); ?>;
-<?php else: ?>
-	var c1 = t202GetVar('c1');
-<?php endif; ?>
-<?php if (array_key_exists('c2', $_GET)): ?>
-	var c2 = <?= json_encode($_GET['c2']); ?>;
-<?php else: ?>
-	var c2 = t202GetVar('c2');
-<?php endif; ?>
-<?php if (array_key_exists('c3', $_GET)): ?>
-	var c3 = <?= json_encode($_GET['c3']); ?>;
-<?php else: ?>
-	var c3 = t202GetVar('c3');
-<?php endif; ?>
-<?php if (array_key_exists('c4', $_GET)): ?>
-	var c4 = <?= json_encode($_GET['c4']); ?>;
-<?php else: ?>
-	var c4 = t202GetVar('c4');
-<?php endif; ?>
+
+<?php
+$geo = geoip_record_by_name($_SERVER['REMOTE_ADDR']);
+extract($geo);
+?>
+ 
+ <?php
+if (array_key_exists('c1', $_GET)):
+?>
+	var c1 =  <?= json_encode($country_code3); ?>;
+<?php
+else:
+?>
+	var c1 =  <?= json_encode($country_code3); ?>;
+<?php
+endif;
+?>
+<?php
+if (array_key_exists('c2', $_GET)):
+?>
+	var c2 = <?= json_encode($region); ?>;
+<?php
+else:
+?>
+	var c2 =  <?= json_encode($region); ?>;
+<?php
+endif;
+?>
+<?php
+if (array_key_exists('c3', $_GET)):
+?>
+	var c3 = <?= json_encode($city); ?>;
+<?php
+else:
+?>
+	var c3 = <?= json_encode($city); ?>;
+<?php
+endif;
+?>
+<?php
+if (array_key_exists('c4', $_GET)):
+?>
+	var c4 = <?= json_encode(geoip_org_by_name($_SERVER['REMOTE_ADDR'])); ?>;
+<?php
+else:
+?>
+	var c4 = <?= json_encode(geoip_org_by_name($_SERVER['REMOTE_ADDR'])); ?>;
+<?php
+endif;
+?>
 	var target_passthrough = t202GetVar('target_passthrough');
 	var keyword = t202GetVar('keyword');
 	var referer = document.referrer;
@@ -48,7 +81,11 @@ function t202Init(){
 	var language = navigator.appName=='Netscape'?navigator.language:navigator.browserLanguage; 
 	language = language.substr(0,2); 
 										    
-	document.write("<script src=\"<?php echo $strProtocol; ?>://<? echo $_SERVER['SERVER_NAME']; ?>/tracking202/static/record.php?lpip=" + t202Enc(lpip)
+	document.write("<script src=\"<?php
+echo $strProtocol;
+?>://<?
+echo $_SERVER['SERVER_NAME'];
+?>/tracking202/static/record.php?lpip=" + t202Enc(lpip)
 		+ "&t202id="				+ t202Enc(t202id)
 		+ "&t202kw="				+ t202kw
 		+ "&OVRAW="					+ t202Enc(OVRAW)
